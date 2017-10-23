@@ -151,6 +151,14 @@ const bindNumInputs = () => {
   });
 };
 
+const bindExport = () => {
+  $('#export').click(function cb() {
+    postMessage('export');
+  });
+};
+
+bindExport();
+
 port.onMessage.addListener((message) => {
   initColors(message.colors);
   initBackgrounds(message.background, message.colors[2]);
@@ -158,4 +166,3 @@ port.onMessage.addListener((message) => {
   bindNumInputs();
   bindBackgrounds();
 });
-

@@ -93,6 +93,13 @@ const connected = (p) => {
       const { index } = message;
       background = index;
       browser.storage.local.set({ background });
+    } else if (message.type === 'export') {
+      // TODO: include the rest of the manifest, so it works.
+      // TODO: create a zip file.
+      // TODO: pretty print the JSON so it has some new lines and is more readable.
+      let blob = new Blob(JSON.stringify(theme)));
+      let url = URL.createObjectURL(blob, {type : 'application/json'});
+      browser.downloads.download({url: url, filename: 'manifest.json'});
     }
     updateTheme();
     setTheme();
