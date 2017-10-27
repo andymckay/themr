@@ -97,7 +97,7 @@ const connected = (p) => {
       // TODO: include the rest of the manifest, so it works.
       // TODO: create a zip file.
       // TODO: pretty print the JSON so it has some new lines and is more readable.
-      let blob = new Blob(JSON.stringify(theme)));
+      let blob = new Blob([JSON.stringify(theme)]);
       let url = URL.createObjectURL(blob, {type : 'application/json'});
       browser.downloads.download({url: url, filename: 'manifest.json'});
     }
